@@ -12,13 +12,16 @@ public class Target : MonoBehaviour
         health -= amount;
         if(health <= 0f)
         {
-            Die();
+            gameObject.SetActive(false);
+            
+            
         }
 
-        void Die()
+        IEnumerator WaitTimer()
         {
-            Destroy(gameObject);
+            yield return new WaitForSeconds(4f);
         }
+
     }
     
 }
