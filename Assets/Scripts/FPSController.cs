@@ -147,22 +147,22 @@ public class FPSController : MonoBehaviour
             characterController.height = standingHeight;
         }
     }
-    bool CheckHeadObstacle()
-    {
-        float radius = characterController.radius;
-        float height = isCrouchKeyPressed ? crouchHeight : standingHeight;
+        bool CheckHeadObstacle()
+        {
+            float radius = characterController.radius;
+            float height = isCrouchKeyPressed ? crouchHeight : standingHeight;
 
-        // Cast a sphere to check for obstacles above
-        bool hasObstacle = Physics.SphereCast(
-            transform.position + Vector3.up * (height - radius), // Start position
-            radius, // Sphere radius
-            Vector3.up, // Direction
-            out RaycastHit hitInfo,
-            height - radius, // Max distance
-            ~LayerMask.GetMask("Player") // Ignore the player's own collider
-        );
+            // Cast a sphere to check for obstacles above
+            bool hasObstacle = Physics.SphereCast(
+                transform.position + Vector3.up * (height - radius), // Start position
+                radius, // Sphere radius
+                Vector3.up, // Direction
+                out RaycastHit hitInfo,
+                height - radius, // Max distance
+                ~LayerMask.GetMask("Player") // Ignore the player's own collider
+            );
 
-        return hasObstacle;
+            return hasObstacle;
+        }
+
     }
-
-}
