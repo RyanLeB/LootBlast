@@ -7,6 +7,7 @@ public class RespawnOnFall : MonoBehaviour
     private CharacterController characterController;
     private Vector3 checkpointPosition;
     public GameObject text;
+    
 
     
     void Start()
@@ -52,6 +53,18 @@ public class RespawnOnFall : MonoBehaviour
             SetCheckpoint(other.transform.position);
             text.SetActive(true);
         }
+
+        if (other.CompareTag("Checkpoint2"))
+        {
+
+            SetCheckpoint(other.transform.position);
+            text.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        text.SetActive(false);
     }
 }
 
