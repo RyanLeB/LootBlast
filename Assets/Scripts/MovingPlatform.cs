@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform[] waypoints; // Define waypoints for platform movement
-    public float speed = 2f; // Speed of the platform
+    public Transform[] waypoints; 
+    public float speed = 2f; 
 
     private int currentWaypointIndex = 0;
     private bool playerOnPlatform = false;
@@ -26,9 +26,9 @@ public class MovingPlatform : MonoBehaviour
             return;
 
         Vector3 targetPosition = waypoints[currentWaypointIndex].position;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime / Vector3.Distance(transform.position, targetPosition));
 
-        // If the platform is close enough to the current waypoint, move to the next waypoint
+        
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
@@ -36,23 +36,27 @@ public class MovingPlatform : MonoBehaviour
 
         if (playerOnPlatform && playerTransform != null)
         {
-            // Calculate the difference in position since the last frame
             Vector3 movementDelta = transform.position - previousPosition;
+            
+            float playerSpeed = movementDelta.magnitude / Time.deltaTime;
+            float adjustmentRatio = playerSpeed > 0 ? speed / playerSpeed * 0.6f : 1f;
 
-            // Update the player's position by the same amount to keep it relative to the platform
-            playerTransform.position += movementDelta;
+            movementDelta *= adjustmentRatio;
+            
+            playerTransform.GetComponent<CharacterController>().Move(movementDelta);
         }
 
-        // Update the previous position for the next frame
         previousPosition = transform.position;
+            
     }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerOnPlatform = true;
             playerTransform = other.transform;
+            playerTransform.parent = transform;
+            
         }
     }
 
@@ -61,6 +65,7 @@ public class MovingPlatform : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerOnPlatform = false;
+            playerTransform.parent = null; 
             playerTransform = null;
         }
     }
