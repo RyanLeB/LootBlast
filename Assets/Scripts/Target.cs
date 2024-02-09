@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
     public float health = 50f;
     private bool isDead = false;
     public GameObject targetPrefab;
-
+    public int scoreValue = 50;
 
     private void Start()
     {
@@ -25,6 +25,8 @@ public class Target : MonoBehaviour
         if (health <= 0f)
         {
             isDead = true;
+
+            GameManager.Instance.AddScore(scoreValue);
             gameObject.SetActive(false);
             
 

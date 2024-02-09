@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -38,7 +39,7 @@ public class FPSController : MonoBehaviour
     CharacterController characterController;
     float rotationX = 0;
     Vector3 moveDirection = Vector3.zero;
-
+    public bool activeGrapple;
 
 
     void Start()
@@ -51,8 +52,11 @@ public class FPSController : MonoBehaviour
 
     }
 
+
     void Update()
     {
+        if (activeGrapple) return;
+        
         Vector3 moveForward = transform.TransformDirection(Vector3.forward);
         Vector3 moveRight = transform.TransformDirection(Vector3.right);
 
@@ -126,6 +130,13 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrapple = true;
+        moveDirection = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+    }
+    
+    
     void ToggleCrouch()
     {
         isCrouchKeyPressed = !isCrouchKeyPressed;
@@ -164,5 +175,17 @@ public class FPSController : MonoBehaviour
 
             return hasObstacle;
         }
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+        
+        return velocityXZ + velocityY;
+    }
 
     }
