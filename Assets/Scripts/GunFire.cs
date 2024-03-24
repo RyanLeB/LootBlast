@@ -6,22 +6,23 @@ public class GunFire : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 100f;
-    public float fireRate = 15f;
-
+    public float fireRate = 5f;
+    private float nextTimeToFire = 0f;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
-
+    public Animator animator;
     
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire) 
         {
+            nextTimeToFire = Time.time + 1f / fireRate; 
             Shoot();
-            
-        }    
+            animator.SetTrigger("Shoot");
+        }
     }
 
     void Shoot()

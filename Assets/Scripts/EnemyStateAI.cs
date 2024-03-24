@@ -41,7 +41,7 @@ public class EnemyStateAI : MonoBehaviour
     [Header("Distance Values")]
     
     [SerializeField] private float attackDistance = 4f;
-    [SerializeField] private float chaseDistance = 12f;
+    [SerializeField] private float chaseDistance = 20f;
     private float distanceToPoint;
     
     
@@ -55,9 +55,7 @@ public class EnemyStateAI : MonoBehaviour
     private float waitTimer = 0f;
     private bool isWaiting = false;
 
-    // Change enemies color based on state   
-
-    Renderer enemyColor;
+    
   
     
 

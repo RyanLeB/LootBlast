@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Target : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Target : MonoBehaviour
     private bool isDead = false;
     public GameObject targetPrefab;
     public int scoreValue = 50;
+    public Animator animator;
+    public NavMeshAgent agent;
 
     private void Start()
     {
@@ -20,15 +23,22 @@ public class Target : MonoBehaviour
     {
         if (isDead)
             return;
-
+        animator.SetTrigger("Hit");
         health -= amount;
         if (health <= 0f)
         {
             isDead = true;
-
+            animator.SetBool("Run", false);
+            animator.SetBool("Attack", false);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Search", false);
+            animator.SetTrigger("Die");
             GameManager.Instance.AddScore(scoreValue);
-            gameObject.SetActive(false);
-            
+
+            agent.enabled = false;
+
+            StartCoroutine(DelayedDeactivate(2f));
+
 
         }
     }
@@ -41,15 +51,12 @@ public class Target : MonoBehaviour
         }
     }
 
-    private IEnumerator RespawnAfterDelay(float delay)
+    private IEnumerator DelayedDeactivate(float delay)
     {
         yield return new WaitForSeconds(delay);
-        health = 50f; // Reset health
-        InstantiateTarget();
-        gameObject.SetActive(true);
-        isDead = false;
+        gameObject.SetActive(false);
     }
 
-    
-    
+
+
 }
