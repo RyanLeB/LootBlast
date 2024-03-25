@@ -50,6 +50,7 @@ public class PlatformTeleporter : MonoBehaviour
                     player.transform.rotation = teleportDestination.rotation;
                     characterController.enabled = true;
                     actionText.SetActive(false);
+                    playerInRange = false;
                 }
                 else
                 {
