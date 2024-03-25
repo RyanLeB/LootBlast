@@ -45,6 +45,11 @@ public class GunFire : MonoBehaviour
             Destroy(impact,2f);
         }
     }
+
+    public bool IsShooting()
+    {
+        return Input.GetButton("Fire1") && Time.time >= nextTimeToFire;
+    }
 }
 
 

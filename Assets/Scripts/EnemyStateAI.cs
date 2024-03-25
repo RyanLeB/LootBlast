@@ -21,13 +21,17 @@ public class EnemyStateAI : MonoBehaviour
     private EnemyStates currentState;
     public NavMeshAgent agent;
     public Animator animator;
-    
+    public AudioSource hurtSFX;
 
     // Enemy patrol points and tracking player movement
 
     [Header("Player Reference")]
     public Transform player;
     private Transform target;
+
+    [Header("Attack Values")]
+    [SerializeField] private float attackRate = 1f;
+    private float attackTimer = 0f;
 
     [Header("Enemy Patrol Points")]
     public Transform[] patrolLocations;
@@ -213,8 +217,21 @@ public class EnemyStateAI : MonoBehaviour
         animator.SetBool("Run", false);
         animator.SetBool("Search", false);
         animator.SetBool("Idle", false);
-        
-        animator.SetBool("Attack", true);
+        if (Vector3.Distance(transform.position, player.position) <= attackDistance)
+        {
+            attackTimer += Time.deltaTime; 
+            if (attackTimer >= attackRate) 
+            {
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(10); 
+                }
+                animator.SetBool("Attack", true);
+                hurtSFX.Play();
+                attackTimer = 0f; 
+            }
+        }
         if (Vector3.Distance(transform.position, player.position) > attackDistance)
         {
             currentState = EnemyStates.chase;

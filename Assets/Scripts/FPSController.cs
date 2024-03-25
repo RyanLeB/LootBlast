@@ -33,7 +33,10 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float standingHeight = 2.0f;
 
     private bool isCrouchKeyPressed = false;
-    
+
+    [Header("Set Animator")]
+    [SerializeField] private Animator animator;
+    public GunFire gunFire;
 
     // character controller
     CharacterController characterController;
@@ -41,8 +44,12 @@ public class FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     public bool activeGrapple;
 
+    [Header("Flashlight")]
+    public Light flashlight;
+    public AudioSource flashlightSFX;
 
-    
+
+
 
 
     void Start()
@@ -74,6 +81,22 @@ public class FPSController : MonoBehaviour
 
         float movementDirectionY = moveDirection.y;
         moveDirection = (moveForward * cursorSpeedX) + (moveRight * cursorSpeedY);
+
+        bool isMoving = cursorSpeedX != 0 || cursorSpeedY != 0;
+        bool isShooting = gunFire.IsShooting();
+        if (!isShooting)
+        {
+            animator.SetBool("Moving", isMoving);
+            animator.SetBool("Running", isSprinting && isMoving);
+            animator.SetBool("notMoving", !isMoving);
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            flashlight.enabled = !flashlight.enabled;
+            flashlightSFX.Play();
+        }
 
         // jump 
 

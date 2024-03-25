@@ -7,7 +7,10 @@ using System.Collections;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] GameObject PauseMenu;
+    [SerializeField] GameObject gameplayUI;
     [SerializeField] FPSController player;
+    [SerializeField] GunFire gunFire;
+    [SerializeField] Animator gunAnim;
     [SerializeField] EnemyStateAI enemy;
     [SerializeField] Button resumeButton; 
     [SerializeField] Button quitButton;
@@ -27,7 +30,10 @@ public class PauseManager : MonoBehaviour
         {
 
             PauseMenu.SetActive(true);
+            gameplayUI.SetActive(false);
             player.enabled = false;
+            gunFire.enabled = false;
+            gunAnim.enabled = false;
             enemy.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -44,7 +50,10 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         PauseMenu.SetActive(false);
+        gameplayUI.SetActive(true);
         player.enabled = true;
+        gunFire.enabled = true;
+        gunAnim.enabled = true;
         enemy.enabled = true;
         Time.timeScale = 1f;
         Cursor.visible = false;
