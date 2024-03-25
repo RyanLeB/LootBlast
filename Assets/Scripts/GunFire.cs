@@ -13,7 +13,7 @@ public class GunFire : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject hitEffect;
     public Animator animator;
-    
+    public AudioSource gunFireSound;
 
     void Update()
     {
@@ -21,6 +21,7 @@ public class GunFire : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1f / fireRate; 
             Shoot();
+            gunFireSound.Play();
             animator.SetTrigger("Shoot");
         }
     }

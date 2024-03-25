@@ -68,8 +68,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 1791059097036215018}
   openDistance: 4
-  speed: 8
+  speed: 6
   movementDirection: {x: 1, y: 0, z: 0}
+  doorNoise: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!1 &2650800633571948232
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,8 +306,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4042537092526642941}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4732137, y: 2.948302, z: 26.0113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.612398, y: -0.09325147, z: 16.466022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -388,8 +390,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 7854544974262280087}
   openDistance: 4
-  speed: 8
+  speed: 6
   movementDirection: {x: -1, y: 0, z: 0}
+  doorNoise: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!1 &6229271126785280582
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,8 +672,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 728328568715661741}
   openDistance: 4
-  speed: 8
+  speed: 6
   movementDirection: {x: 0, y: 1, z: 0}
+  doorNoise: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!1 &7910973856824299020
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Target : MonoBehaviour
     public int scoreValue = 50;
     public Animator animator;
     public NavMeshAgent agent;
+    public AudioSource hitSound;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class Target : MonoBehaviour
         if (isDead)
             return;
         animator.SetTrigger("Hit");
+        
         health -= amount;
         if (health <= 0f)
         {
@@ -33,10 +35,10 @@ public class Target : MonoBehaviour
             animator.SetBool("Idle", false);
             animator.SetBool("Search", false);
             animator.SetTrigger("Die");
+            
             GameManager.Instance.AddScore(scoreValue);
 
             agent.enabled = false;
-
             StartCoroutine(DelayedDeactivate(2f));
 
 
@@ -53,6 +55,7 @@ public class Target : MonoBehaviour
 
     private IEnumerator DelayedDeactivate(float delay)
     {
+            hitSound.Play();
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }

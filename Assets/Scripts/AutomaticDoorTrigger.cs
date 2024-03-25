@@ -11,6 +11,9 @@ public class AutomaticDoorTrigger : MonoBehaviour
     private bool isOpening = false;
     private bool isClosing = false;
 
+    public AudioSource doorNoise;
+    public AudioSource doorClose;
+
     private void Start()
     {
         initialPosition = door.position;
@@ -22,6 +25,7 @@ public class AutomaticDoorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isOpening = true;
+            doorNoise.Play();
             isClosing = false; 
         }
     }
@@ -31,6 +35,7 @@ public class AutomaticDoorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isClosing = true;
+            doorClose.Play();
             isOpening = false; 
         }
     }
