@@ -21,6 +21,7 @@ public class EnemyStateAI : MonoBehaviour
     private EnemyStates currentState;
     public NavMeshAgent agent;
     public Animator animator;
+    
 
     // Enemy patrol points and tracking player movement
 
@@ -35,6 +36,7 @@ public class EnemyStateAI : MonoBehaviour
     private Vector3 lastSeenLocation = Vector3.zero;
     
     private bool enemySearching;
+    public bool isPaused = false;
 
     // Enemy Values
 
@@ -61,11 +63,14 @@ public class EnemyStateAI : MonoBehaviour
 
     [Header("Retreat time")]
     private float retreatTimer;
-    [SerializeField] private float retreatDuration = 5f; // Adjust the retreat duration as needed
+    [SerializeField] private float retreatDuration = 5f;
 
-    void Start()
+    private void Awake()
     {
-        
+            
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+
         currentState = EnemyStates.patrol;
         currentPatrolPoint = 0;
         target = patrolLocations[currentPatrolPoint];
@@ -79,6 +84,9 @@ public class EnemyStateAI : MonoBehaviour
     
     void Update()
     {
+        if (isPaused)
+            return;
+
         ChangeState();
         switch (currentState)
         {

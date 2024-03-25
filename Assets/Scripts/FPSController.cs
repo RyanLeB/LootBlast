@@ -33,13 +33,16 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float standingHeight = 2.0f;
 
     private bool isCrouchKeyPressed = false;
-
+    
 
     // character controller
     CharacterController characterController;
     float rotationX = 0;
     Vector3 moveDirection = Vector3.zero;
     public bool activeGrapple;
+
+
+    
 
 
     void Start()
