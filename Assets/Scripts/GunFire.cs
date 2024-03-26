@@ -10,8 +10,8 @@ public class GunFire : MonoBehaviour
     public float range = 100f;
     public float fireRate = 5f;
     private float nextTimeToFire = 0f;
-    public int maxAmmo = 10;
-    private int currentAmmo;
+    public int maxAmmo = 999;
+    private int currentAmmo = 10;
     
     public TMP_Text ammoGainedText;
 
@@ -22,15 +22,20 @@ public class GunFire : MonoBehaviour
     public AudioSource gunFireSound;
     public AudioSource reloadSound;
 
+    private void Start()
+    {
+        UpdateAmmoUI();
+    }
+
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire) 
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && currentAmmo > 0)
         {
             nextTimeToFire = Time.time + 1f / fireRate; 
-            Shoot();
-            gunFireSound.Play();
-            animator.SetTrigger("Shoot");
             currentAmmo--;
+            Shoot();
+            animator.SetTrigger("Shoot");
+            gunFireSound.Play();
         }
     }
 

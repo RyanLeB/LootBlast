@@ -1880,7 +1880,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ammo: 10'
+  m_text: 'Ammo:
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47066194b5c21804aa4a8d9c229e8691, type: 2}
   m_sharedMaterial: {fileID: 1908608402214995157, guid: 47066194b5c21804aa4a8d9c229e8691, type: 2}
@@ -2141,6 +2143,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: a1b99a5890879f948b0327a68e87c05e, type: 3}
+    - target: {fileID: 2127538707840637615, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
+      propertyPath: maxAmmo
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 2127538707840637615, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
       propertyPath: reloadSound
       value: 
