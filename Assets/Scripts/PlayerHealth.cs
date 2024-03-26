@@ -16,6 +16,18 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         healthText.text = "Health: " + currentHealth + " / 100";
+        if (currentHealth <= 20)
+        {
+            healthText.color = Color.red;
+        }
+        else if (currentHealth <= 50)
+        {
+            healthText.color = Color.yellow;
+        }
+        else
+        {
+            healthText.color = Color.green;
+        }
     }
 
     public void TakeDamage(int damage)

@@ -1423,7 +1423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41b581fa0bb02b4e90cb205d6779722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreGainedText: {fileID: 0}
   scoreText: {fileID: 383444046}
+  ammoText: {fileID: 0}
 --- !u!4 &588996568
 Transform:
   m_ObjectHideFlags: 0
@@ -1760,7 +1762,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.48424345, b: 0, a: 1}
+      maxColor: {r: 0.09392464, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9921,7 +9923,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
