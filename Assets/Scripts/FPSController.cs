@@ -67,6 +67,12 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+
+        if (PauseManager.IsGamePaused)
+        {
+            return;
+        }
+
         if (activeGrapple) return;
         
         Vector3 moveForward = transform.TransformDirection(Vector3.forward);
@@ -190,8 +196,13 @@ public class FPSController : MonoBehaviour
         activeGrapple = true;
         moveDirection = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
     }
-    
-    
+
+
+    public bool IsMoving()
+    {
+        return characterController.velocity.magnitude > 0;
+    }
+
     void ToggleCrouch()
     {
         isCrouchKeyPressed = !isCrouchKeyPressed;

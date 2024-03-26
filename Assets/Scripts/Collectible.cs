@@ -3,7 +3,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public int scoreValue = 10; 
-     
+    public AudioSource collectSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +11,7 @@ public class Collectible : MonoBehaviour
         {
             
             GameManager.Instance.AddScore(scoreValue);
-
+            collectSound.Play();
             
             Destroy(gameObject);
             

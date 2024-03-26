@@ -5,6 +5,7 @@ public class PlatformTeleporter : MonoBehaviour
     public Transform teleportDestination; 
     public KeyCode teleportKey = KeyCode.E;
     public GameObject actionText;
+    public AudioSource teleportSound;
 
     private bool playerInRange = false;
 
@@ -13,6 +14,7 @@ public class PlatformTeleporter : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(teleportKey))
         {
             TeleportPlayer();
+            teleportSound.Play();
         }
     }
 

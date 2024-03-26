@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] EnemyStateAI enemy;
     [SerializeField] Button resumeButton; 
     [SerializeField] Button quitButton;
-
+    public static bool IsGamePaused { get; private set; }
 
 
     void Start()
@@ -26,12 +26,13 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !player.IsMoving())
         {
 
             PauseMenu.SetActive(true);
             gameplayUI.SetActive(false);
             player.enabled = false;
+            
             gunFire.enabled = false;
             gunAnim.enabled = false;
             enemy.enabled = false;
@@ -52,6 +53,7 @@ public class PauseManager : MonoBehaviour
         PauseMenu.SetActive(false);
         gameplayUI.SetActive(true);
         player.enabled = true;
+        
         gunFire.enabled = true;
         gunAnim.enabled = true;
         enemy.enabled = true;

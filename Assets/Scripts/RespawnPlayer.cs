@@ -29,6 +29,10 @@ public class RespawnOnFall : MonoBehaviour
             
             Respawn();
         }
+
+        
+
+
     }
 
     
@@ -60,6 +64,12 @@ public class RespawnOnFall : MonoBehaviour
             SetCheckpoint(other.transform.position);
             text.SetActive(true);
         }
+
+        if (other.CompareTag("Laser"))
+        {
+            Respawn();
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
