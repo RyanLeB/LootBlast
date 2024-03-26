@@ -49,7 +49,9 @@ public class FPSController : MonoBehaviour
     public AudioSource flashlightSFX;
 
 
-
+    [Header("Move Noises")]
+    public AudioSource walkSound;
+    public AudioSource sprintSound;
 
 
     void Start()
@@ -84,6 +86,33 @@ public class FPSController : MonoBehaviour
 
         bool isMoving = cursorSpeedX != 0 || cursorSpeedY != 0;
         bool isShooting = gunFire.IsShooting();
+        
+        // Play footstep sounds
+        if (isMoving)
+        {
+            if (isSprinting)
+            {
+                if (!sprintSound.isPlaying)
+                {
+                    walkSound.Stop();
+                    sprintSound.Play();
+                }
+            }
+            else
+            {
+                if (!walkSound.isPlaying)
+                {
+                    sprintSound.Stop();
+                    walkSound.Play();
+                }
+            }
+        }
+        else
+        {
+            walkSound.Stop();
+            sprintSound.Stop();
+        }
+
         if (!isShooting)
         {
             animator.SetBool("Moving", isMoving);
