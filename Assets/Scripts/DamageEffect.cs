@@ -26,6 +26,11 @@ public class DamageEffect : MonoBehaviour
         StartCoroutine(FadeDamageEffect());
     }
 
+    public void HideDamageEffect()
+    {
+        damageImage.enabled = false;
+    }
+
     private IEnumerator FadeDamageEffect()
     {
         while (damageImage.color.a > 0f)

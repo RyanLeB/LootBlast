@@ -32,7 +32,7 @@ public class PauseManager : MonoBehaviour
             PauseMenu.SetActive(true);
             gameplayUI.SetActive(false);
             player.enabled = false;
-            
+            IsGamePaused = true;
             gunFire.enabled = false;
             gunAnim.enabled = false;
             enemy.enabled = false;
@@ -53,7 +53,7 @@ public class PauseManager : MonoBehaviour
         PauseMenu.SetActive(false);
         gameplayUI.SetActive(true);
         player.enabled = true;
-        
+        IsGamePaused = false;
         gunFire.enabled = true;
         gunAnim.enabled = true;
         enemy.enabled = true;

@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     public TMP_Text healthText;
     public DamageEffect damageEffect;
+    public GameOver gameOver;
+
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         damageEffect.ShowDamageEffect();
         if (currentHealth <= 0)
         {
+            damageEffect.HideDamageEffect();
             Die();
         }
     }
@@ -53,5 +56,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Handle player death here
         Debug.Log("Player died!");
+
+        gameOver.GameOverSequence();
     }
 }
