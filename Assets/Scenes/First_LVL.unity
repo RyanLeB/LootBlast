@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5783614410533753394, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: health
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 5783614410533753394, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: hitSound
@@ -1501,7 +1501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7092270163811868702, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: m_Speed
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8288477043069567163, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2827,7 +2827,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -13394,7 +13394,7 @@ PrefabInstance:
       objectReference: {fileID: 409167054}
     - target: {fileID: 3313356252198214289, guid: 47b50a78bbb833c4a9e169780e8144bf, type: 3}
       propertyPath: health
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 3313356252198214289, guid: 47b50a78bbb833c4a9e169780e8144bf, type: 3}
       propertyPath: hitSound
