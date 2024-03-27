@@ -23,7 +23,7 @@ public class FPSController : MonoBehaviour
     [Header("Set Camera Controls")]
     // camera controls
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float lookSpeed = 2.5f;
+    [SerializeField] public float lookSpeed = 2.5f;
     [SerializeField] private float lookLimitX = 45.0f;
 
 
