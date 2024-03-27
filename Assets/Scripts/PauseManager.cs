@@ -26,7 +26,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !player.IsMoving())
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
 
             PauseMenu.SetActive(true);

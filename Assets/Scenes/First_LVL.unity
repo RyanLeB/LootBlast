@@ -871,6 +871,8 @@ PlayableDirector:
     value: {fileID: 1675305222}
   - key: {fileID: 6996339656919592311, guid: e8a8f8cc25f44ef4f9449ff4b171d7d7, type: 2}
     value: {fileID: 842775903}
+  - key: {fileID: -1090093327754863412, guid: e8a8f8cc25f44ef4f9449ff4b171d7d7, type: 2}
+    value: {fileID: 2124685847}
   m_ExposedReferences:
     m_References: []
 --- !u!65 &237406275
@@ -1390,6 +1392,10 @@ PrefabInstance:
     - target: {fileID: 4545707472493896606, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: chaseDistance
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545707472493896606, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
+      propertyPath: attackDistance
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4545707472493896606, guid: f52930139fa1ded4da64191dd5fab776, type: 3}
       propertyPath: patrolLocations.Array.size
@@ -2812,7 +2818,7 @@ MonoBehaviour:
   patrolLocations:
   - {fileID: 2095251658}
   isPaused: 0
-  attackDistance: 4
+  attackDistance: 7
   chaseDistance: 200
   enemySearchTime: 10
   patrolDelay: 2
@@ -4180,6 +4186,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 514945091}
   m_SourcePrefab: {fileID: 100100000, guid: 73d4231be4333cb41b0f33ba6e65afd0, type: 3}
+--- !u!23 &536015432 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1163143767725221035, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
+  m_PrefabInstance: {fileID: 875402498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &538103715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5927,6 +5938,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad17da67acf05b419e63e76a31fc074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &820087791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820087793}
+  - component: {fileID: 820087792}
+  m_Layer: 0
+  m_Name: PlayerDisableIntro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &820087792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820087791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f16aa9d997f44b89754f933e68bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 520865133}
+  gunControl: {fileID: 785431481}
+  ammoText: {fileID: 750677868}
+  healthText: {fileID: 1081562718}
+  scoreText: {fileID: 1531965368}
+  reticle: {fileID: 1031423574}
+  walkingSound: {fileID: 1214858488}
+  runningSound: {fileID: 1322183210}
+  gunAnim: {fileID: 785431478}
+  gunRender: {fileID: 536015432}
+  flashLight: {fileID: 4910241}
+  countdownTime: 11
+--- !u!4 &820087793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820087791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.687683, y: 10.216372, z: 117.170296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827252839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7097767208714360799, guid: 301ef0e9fa2a7f840b2ad7f03508e0c3, type: 3}
@@ -7452,6 +7519,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: a1b99a5890879f948b0327a68e87c05e, type: 3}
+    - target: {fileID: 1163143767725221035, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2127538707840637615, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
       propertyPath: maxAmmo
       value: 999
@@ -7528,6 +7599,10 @@ PrefabInstance:
       propertyPath: resumeButton
       value: 
       objectReference: {fileID: 1794455423}
+    - target: {fileID: 3363934351743966826, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6998523550705834283, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
       propertyPath: LightsModule.light
       value: 
@@ -7535,6 +7610,10 @@ PrefabInstance:
     - target: {fileID: 7066305881147820229, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066305881147820229, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8523291390718148834, guid: 182041111e366394b9ba07b3bfe7de2a, type: 3}
       propertyPath: gameOver
@@ -10578,7 +10657,7 @@ GameObject:
   - component: {fileID: 1031423575}
   - component: {fileID: 1031423574}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15647,6 +15726,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1335956350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335956352}
+  - component: {fileID: 1335956351}
+  m_Layer: 0
+  m_Name: PlayerDisableLights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1335956351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335956350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f16aa9d997f44b89754f933e68bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 520865133}
+  gunControl: {fileID: 785431481}
+  ammoText: {fileID: 750677868}
+  healthText: {fileID: 1081562718}
+  scoreText: {fileID: 1531965368}
+  reticle: {fileID: 1031423574}
+  walkingSound: {fileID: 1214858488}
+  runningSound: {fileID: 1322183210}
+  gunAnim: {fileID: 785431478}
+  gunRender: {fileID: 536015432}
+  flashLight: {fileID: 4910241}
+  countdownTime: 8.3
+--- !u!4 &1335956352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335956350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.687683, y: 10.216372, z: 117.170296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1337607877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19828,6 +19963,8 @@ PlayableDirector:
     value: {fileID: 1499412048}
   - key: {fileID: 2851202615410686292, guid: 4d5886c1cc96aed4f8b7dbadffb84d6f, type: 2}
     value: {fileID: 926582399}
+  - key: {fileID: -7689903795423347965, guid: 4d5886c1cc96aed4f8b7dbadffb84d6f, type: 2}
+    value: {fileID: 1335956350}
   m_ExposedReferences:
     m_References: []
 --- !u!65 &1722708475
@@ -27107,6 +27244,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122897884}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2124685847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124685849}
+  - component: {fileID: 2124685848}
+  m_Layer: 0
+  m_Name: PlayerDisableFinal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2124685848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124685847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f16aa9d997f44b89754f933e68bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 520865133}
+  gunControl: {fileID: 785431481}
+  ammoText: {fileID: 750677868}
+  healthText: {fileID: 1081562718}
+  scoreText: {fileID: 1531965368}
+  reticle: {fileID: 1031423574}
+  walkingSound: {fileID: 1214858488}
+  runningSound: {fileID: 1322183210}
+  gunAnim: {fileID: 785431478}
+  gunRender: {fileID: 536015432}
+  flashLight: {fileID: 4910241}
+  countdownTime: 21
+--- !u!4 &2124685849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124685847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.687683, y: 10.216372, z: 117.170296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2135409968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29130,6 +29323,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1263578310755760771, guid: 301ef0e9fa2a7f840b2ad7f03508e0c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2717586841766084556, guid: 301ef0e9fa2a7f840b2ad7f03508e0c3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -29282,6 +29479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7097767208714360799, guid: 301ef0e9fa2a7f840b2ad7f03508e0c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8619628745001610404, guid: 301ef0e9fa2a7f840b2ad7f03508e0c3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -29354,3 +29555,6 @@ SceneRoots:
   - {fileID: 237406278}
   - {fileID: 1878328367}
   - {fileID: 1765709378}
+  - {fileID: 820087793}
+  - {fileID: 1335956352}
+  - {fileID: 2124685849}
