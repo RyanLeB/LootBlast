@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint2
   - PlayerSpawn
   - Laser
+  - Boss
   layers:
   - Default
   - TransparentFX

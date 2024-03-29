@@ -39,8 +39,12 @@ public class Target : MonoBehaviour
             GameManager.Instance.AddScore(scoreValue);
 
             agent.enabled = false;
+            
+            if (gameObject.CompareTag("Boss"))
+            {
+                EnemyStateAI.bossesDefeated++;
+            }
             StartCoroutine(DelayedDeactivate(2f));
-
 
         }
     }

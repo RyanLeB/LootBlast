@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
 using System.Collections;
+using UnityEngine.Playables;
 
 public class EnemyStateAI : MonoBehaviour
 {
@@ -61,13 +62,15 @@ public class EnemyStateAI : MonoBehaviour
     private float waitTimer = 0f;
     private bool isWaiting = false;
 
-    
-  
-    
-
     [Header("Retreat time")]
     private float retreatTimer;
     [SerializeField] private float retreatDuration = 5f;
+
+    [Header("Boss count")]
+    public static int bossesDefeated = 0;
+
+    [Header("Timeline")]
+    public PlayableDirector timeline;
 
     private void Awake()
     {
@@ -112,9 +115,13 @@ public class EnemyStateAI : MonoBehaviour
 
         }
 
+        if (EnemyStateAI.bossesDefeated >= 2)
+        {
+            timeline.Play();
+        }
 
-       
-       
+
+
     }
     public void ChangeState()
     {
